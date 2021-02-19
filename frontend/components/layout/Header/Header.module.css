@@ -1,0 +1,145 @@
+
+
+.header {
+    height: 70px;
+    background-color: rgb(0, 1, 65);
+    color: #eee;
+
+
+    /* display: flex;
+    justify-content: center; */
+}
+
+.headerContainer {
+    height: 100%;
+
+    /* width: 60%; */
+    margin: 0px 20%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logoh1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+.drawer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.headerInput {
+    width: 100%;
+    padding: 10px;
+    max-width: 600px;
+    height: 30px;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-color: #fff;
+
+}
+
+.middle {
+    width: 100%;
+    margin: 0 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    height: 100%;
+}
+
+
+.link {
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+@media(min-width: 1164px) {
+    .drawer {
+        display: none;
+    }
+}
+
+@media(max-width: 1164px) {
+    .headerInput {
+        display: none;
+    }
+    .headerContainer {
+        margin: 0;
+    }
+    .headerInput {
+        max-width: 300px;
+    }
+}
+
+
+
+@media(max-width: 576px) {
+    .right {
+        display: none;
+    }
+
+    .headerInput {
+        display: none;
+    }
+
+    .left {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+    }
+
+    .link {
+        display: flex;
+        justify-content: center;
+        margin-right: 50%;
+    }
+
+    .drawer {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+}
+
+.linkAdmin {
+    font-size: 1.1em;
+    
+}
+
+.rightAdmin {
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.rightAdmin:hover {
+    background-color: #444;
+}

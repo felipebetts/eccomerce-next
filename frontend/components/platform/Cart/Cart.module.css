@@ -1,0 +1,17 @@
+.cartDrawer {
+    width: 300px;
+}
+
+.cartRight {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.cartItem {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

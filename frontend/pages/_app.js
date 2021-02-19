@@ -1,3 +1,4 @@
+import '@brainhubeu/react-carousel/lib/style.css';
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {

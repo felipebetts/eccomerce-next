@@ -1,0 +1,124 @@
+.browsePage {
+    margin: 50px 13%;
+    /* width: calc(100% - 100px); */
+    
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: 
+        'navAside gridContent';
+}
+
+.gridContent {
+    /* width: 450px; */
+    /* background-color: chartreuse; */
+}
+
+.navAside {
+    margin: 20px;
+    /* border-radius: 3px; */
+    /* background-color: #fff; */
+    grid-area: navAside;    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.categories {
+    width: 100%;
+    
+    padding: 15px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.categories h5 {
+    margin: 10px;
+}
+
+.categoriesTitle {
+    transition-duration: 150ms;
+}
+
+.categoriesTitle:hover {
+    text-decoration: none;
+    color: inherit;
+    border-bottom: solid 3px var(--main-color);
+}
+
+.category {
+    height: 100%;
+    padding: 5px;
+    transition-duration: 150ms;
+}
+
+.category:hover {
+    border-left: solid 3px var(--main-color);
+    /* color: var(--main-color); */
+    /* border: olive; */
+    text-decoration: none;
+}
+
+.browser {
+    grid-area: gridContent;
+    display: flex;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.card {
+    margin: 10px 15px
+}
+
+@media(max-width: 1164px) {  
+    .browsePage {
+        margin: 0;
+        width: 100%;
+        /* margin-top: 20px; */
+        
+        display: grid;
+        grid-template-rows: 80px 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+            'navAside'
+            'gridContent';
+    }
+    .navAside {
+        width: 100%;
+        margin: 0px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .paper {
+        height: 60%;
+        width: 80%;
+    }
+    .categories {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 5px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .categoriesTitle {
+        display: none;
+    }
+    .category:hover {
+        border-left: 0px;
+        border-bottom: solid 3px var(--main-color);
+        margin: 0px;
+        /* color: var(--main-color); */
+        /* border: olive; */
+        text-decoration: none;
+    }
+    .browser {
+        justify-content: center;
+    }
+}

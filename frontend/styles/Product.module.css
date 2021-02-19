@@ -1,0 +1,55 @@
+.product {
+    margin: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+
+.carouselContainer {
+    width: 450px;
+    margin: 20px;
+}
+
+.carouselImage {
+    width: 450px;
+    height: 450px;
+}
+
+.carouselImageSmall {
+    width: 50px;
+    height: 50px;
+}
+
+
+.productDescription {
+    width: 450px;
+    margin: 20px;
+    font-size: 1.2rem;
+    /* border: solid 1px #ddd;
+    border-radius: 5px; */
+
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-around; */
+}
+
+.productDescription .title {
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.productDescription .description {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    /* font-size: ; */
+}
+
+.productDescription .price {
+    margin-top: 15px;
+    font-size: 1.6rem;
+}
+
+.zoomContainer {
+    height: 100%;
+}

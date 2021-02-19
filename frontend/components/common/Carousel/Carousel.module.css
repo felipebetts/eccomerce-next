@@ -1,0 +1,25 @@
+/* .carousel {
+    height: 150px;
+} */
+
+.carouselItem {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+    background-color: #eee; /* Used if the image is unavailable */
+    height: 500px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    width: 100%;
+
+
+    font-weight: 500;
+}
+
+.white {
+    color: #eee;
+}
