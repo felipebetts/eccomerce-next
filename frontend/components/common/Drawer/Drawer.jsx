@@ -40,15 +40,7 @@ function TemporaryDrawer(props) {
     <div>
         <React.Fragment key={props.anchor}>
           <Button onClick={toggleDrawer(props.anchor, true)}>
-            <div style={{ marginLeft: "10px" }}>
               <Label style={{ color: props.color}} />
-              {/* {props.title ? <span style={{
-                marginTop: "5px",
-                textTransform: "none",
-                fontSize: "1.2em",
-                color: "#eee",
-              }}>{props.title}</span> : false} */}
-            </div>
           </Button>
           <Drawer anchor={props.anchor} open={state[props.anchor]} onClose={toggleDrawer(props.anchor, false)}>
             <div className={styles.drawerContainer}>
