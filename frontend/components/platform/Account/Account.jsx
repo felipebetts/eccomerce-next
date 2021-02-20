@@ -65,7 +65,7 @@ function Account(props) {
     const [ user, setUser] = useState(JSON.parse(localStorage.getItem(userKey)))
     console.log(user)
 
-    if(user) {
+    if(user && typeof user !== String) {
         return (
                 <div >
                     <List className={styles.accountDrawerContainer} >

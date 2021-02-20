@@ -7,6 +7,9 @@ import { Paper, Button } from "@material-ui/core";
 import PageTemplate from '../components/PageTemplate'
 import LabelAndInput from '../components/common/Form/LabelAndInput';
 import consts from '../consts/apiURLS';
+import { userKey } from '../consts/userKey'
+
+// var loginError = null
 
 function AuthForm(props) {
 
@@ -22,7 +25,15 @@ function AuthForm(props) {
     const onFormSubmit = (values) => {
         // const { login, signup } = props
         // const value = JSON.stringify(values)
-        props.loginMode ? login(values) : signup(values)
+        if (props.loginMode) {
+            login(values)
+            if (typeof login(values) === String) {
+                props.setLoginError(login(values))
+            }
+        } else {
+            signup(values)
+        }
+
         if(localStorage.getItem('_eccomerce_user') !== undefined) {
             // props.history.push('/')
         }
@@ -31,6 +42,14 @@ function AuthForm(props) {
     }
 
     // onSubmit={() => onFormSubmit(formValues)}
+
+    const renderErrorMessage = () => {
+        if (loginError) {
+            return (
+                <p>Erro</p>
+            )
+        }
+    }
 
     if(props.loginMode) {
         return (
@@ -46,7 +65,8 @@ function AuthForm(props) {
                     label="Senha"
                     value={formValues.password} 
                     onChange={e => setFormValues({ ...formValues, password: e.target.value})}
-                />             
+                />
+                <p>{props.loginError}</p>
                 <Button variant="contained" color="primary" style={{ margin: "10px" }} type="button" onClick={() => onFormSubmit(formValues)}>{props.loginMode ? 'Login' : 'Cadastre-se'}</Button>   
             </form>
         )
@@ -88,6 +108,7 @@ function AuthForm(props) {
 function Auth(props) {
 
     const [ loginMode, setLoginMode ] = useState(true)
+    const [ loginError, setLoginError ] = useState('')
 
     const renderLogin = () => {
         return (
@@ -106,7 +127,7 @@ function Auth(props) {
             <div className={styles.auth}>
                 <Paper className={styles.authContainer} >
                     <h2>{loginMode ? 'Login' : 'Cadastro'}</h2>
-                    <AuthForm loginMode={loginMode} history={props.history} />
+                    <AuthForm loginMode={loginMode} history={props.history} loginError={loginError} setLoginError={setLoginError} />
                     {loginMode ? renderLogin() : renderRegister()}
                 </Paper>
             </div>
@@ -119,7 +140,6 @@ export default (Auth)
 
 function login(values) {
 
-    const userKey = '_eccomerce_user'
     // const INITIAL_STATE = {
     //     user: JSON.parse(localStorage.getItem(userKey)),
     //     validToken: false
@@ -135,7 +155,10 @@ function login(values) {
         })
         .catch(e => {
             e.response.data.errors.forEach(
-                error => console.log(error))
+                error => {
+                    return error
+                    // console.log(typeof loginError)
+                })
         })
 
 }

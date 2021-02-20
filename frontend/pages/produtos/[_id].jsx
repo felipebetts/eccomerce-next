@@ -44,12 +44,12 @@ export async function getStaticProps(context) {
 function Product(props) {
     const [ valor, setValor ] = useState(0)
     const [ product, setProduct ] = useState({})
-    if (typeof window !== 'undefined') {
-        var user = JSON.parse(localStorage.getItem(userKey))
-        console.log('we are running on the client')
-    } else {
-        console.log('we are running on the server');
-    }
+    const [user, setUser] = useState(typeof window !== 'undefined' ? JSON.parse(localStorage.getItem(userKey)) : {})
+    // if (typeof window !== 'undefined') {
+    //     console.log('we are running on the client')
+    // } else {
+    //     console.log('we are running on the server');
+    // }
     console.log(user)
     // const user = auth.user || localStorage.getItem('_eccomerce_user')
     // console.log(user)
@@ -57,7 +57,8 @@ function Product(props) {
     const URL = 'http://localhost:3003/oapi/products'
     useEffect(async function() {
         if(props._id) {
-            const productFetched = await axios.get(`${URL}/${props._id}`).then(resp => resp.data)
+            const productFetched = await axios.get(`${URL}/${props._id}`).then(resp => resp.data).catch(err => console.log(err))
+            console.log(productFetched)
             return setProduct(productFetched)
         }
     }, [props._id])
@@ -75,10 +76,11 @@ function Product(props) {
             newUserCart.push(product)
             const newUser = { ...user, cart: newUserCart }
 
+            delete newUser['token']
             console.log(newUserCart)
             console.log(newUser)
-            // localStorage.setItem(userKey, newUser)
-            axios.get(`${URLS.API_URL}/users/${props._id}`) //, newUser
+            localStorage.setItem(userKey, JSON.stringify(newUser))
+            axios.put(`${URLS.API_URL}/users/${props._id}`, newUser) //, newUser
                 .then(resp => {
                     console.log(resp)
                 })

@@ -1,1 +1,1 @@
-export const userKey = '_eccomerce_user'
+export const userKey = '_eccomerce_user_key'

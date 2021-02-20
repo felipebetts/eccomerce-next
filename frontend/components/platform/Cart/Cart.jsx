@@ -27,7 +27,8 @@ function Cart(props) {
     // if(auth)
     // let cart = auth.user.cart || [] 
     // console.log(cart)
-    const [ user, setUser] = useState(JSON.parse(localStorage.getItem(userKey)))
+    let user = JSON.parse(localStorage.getItem(userKey))
+    console.log(user)
     // const cart = user.cart
     
     const Icon = props.icon
@@ -63,6 +64,7 @@ function Cart(props) {
                     </div>   
                 </ListItem> */}
                 {user.cart.map((item, index) => {
+                    // console.log(index)
                     return (
                         <div key={index}>
                             <ListItem >
