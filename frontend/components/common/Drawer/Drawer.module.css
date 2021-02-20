@@ -1,3 +1,9 @@
+.drawerContainer {
+    margin: 20px;
+    width: 80vw;
+    max-width: 400px;
+}
+
 .buttonText {
     margin-top: 5px;
     text-transform: none;

@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 
 // import { toggleDrawer } from '../../../store/actions/drawer'
 
-// import './Drawer.css'
+import styles from './Drawer.module.css'
 
 function TemporaryDrawer(props) {
 
@@ -42,16 +42,18 @@ function TemporaryDrawer(props) {
           <Button onClick={toggleDrawer(props.anchor, true)}>
             <div style={{ marginLeft: "10px" }}>
               <Label style={{ color: props.color}} />
-              {props.title ? <span style={{
+              {/* {props.title ? <span style={{
                 marginTop: "5px",
                 textTransform: "none",
                 fontSize: "1.2em",
                 color: "#eee",
-              }}>{props.title}</span> : false}
+              }}>{props.title}</span> : false} */}
             </div>
           </Button>
           <Drawer anchor={props.anchor} open={state[props.anchor]} onClose={toggleDrawer(props.anchor, false)}>
-            {props.children}
+            <div className={styles.drawerContainer}>
+              {props.children}
+            </div>
           </Drawer>
         </React.Fragment>
     </div>

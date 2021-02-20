@@ -1,7 +1,3 @@
-.cartDrawer {
-    width: 300px;
-}
-
 .cartRight {
     width: 50%;
     display: flex;
@@ -14,4 +10,38 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.imageContainer {
+    height: 85px;
+    width: 85px;
+}
+
+.image {
+
+
+    background-color: #eee; /* Used if the image is unavailable */
+    height: 85px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    width: 100%;
+}
+
+.inputLabel {
+    margin-right: 10px;
+}
+
+.select {
+    display: flex;
+    align-items: center;
+}
+
+.goToCart {
+    width: 100%;
+    margin-top: 35px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
