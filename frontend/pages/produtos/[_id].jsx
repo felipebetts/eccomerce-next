@@ -15,6 +15,8 @@ import { ShoppingCart } from '@material-ui/icons'
 
 import axios from 'axios';
 import styles from '../../styles/Product.module.css'
+import { userKey } from '../../consts/userKey'
+import URLS from '../../consts/apiURLS'
 
 export async function getStaticPaths() {
     return {
@@ -42,6 +44,13 @@ export async function getStaticProps(context) {
 function Product(props) {
     const [ valor, setValor ] = useState(0)
     const [ product, setProduct ] = useState({})
+    if (typeof window !== 'undefined') {
+        var user = JSON.parse(localStorage.getItem(userKey))
+        console.log('we are running on the client')
+    } else {
+        console.log('we are running on the server');
+    }
+    console.log(user)
     // const user = auth.user || localStorage.getItem('_eccomerce_user')
     // console.log(user)
     
@@ -60,21 +69,35 @@ function Product(props) {
 
     const onChange = value => setValor(value);
     
-    // function handleButtonClick() {
-    //     // e.preventDefault()
-    //     // const user = props.auth.user
-    //     console.log(user)
-    //     const cartUser = { ...user }
-    //     const email = `${user.email}`
-    //     if(email) {
-    //         console.log(email)
-    //         props.addToCart(props.product, email, cartUser)
-    //     }
-    //     // else {
-    //     //     props.addToCart(props.product)
-    //     // }
-    //     // console.log(props.cart)
-    // }
+    function handleButtonClick() {
+        if(user && product) {
+            const newUserCart = [ ...user.cart ]
+            newUserCart.push(product)
+            const newUser = { ...user, cart: newUserCart }
+
+            console.log(newUserCart)
+            console.log(newUser)
+            // localStorage.setItem(userKey, newUser)
+            axios.get(`${URLS.API_URL}/users/${props._id}`) //, newUser
+                .then(resp => {
+                    console.log(resp)
+                })
+                .catch(error => console.log(error))
+        }
+        // e.preventDefault()
+        // const user = props.auth.user
+        // console.log(user)
+        // const cartUser = { ...user }
+        // const email = `${user.email}`
+        // if(email) {
+        //     console.log(email)
+        //     props.addToCart(props.product, email, cartUser)
+        // }
+        // else {
+        //     props.addToCart(props.product)
+        // }
+        // console.log(props.cart)
+    }
 
     // const imgProps = {width: 450, height: 400, zoomWidth: 500, img: props.product.imageSrc || '/images/eu.jpg'}
     

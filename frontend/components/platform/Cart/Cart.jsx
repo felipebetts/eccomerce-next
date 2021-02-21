@@ -9,6 +9,7 @@ import Divider from '@material-ui/core/Divider'
 
 import styles from './Cart.module.css'
 import { userKey } from '../../../consts/userKey'
+import { InputLabel, MenuItem, Select, Button } from '@material-ui/core'
 // import { changeCurrentProduct } from '../../../store/actions/currentProduct'
 
 function Cart(props) {
@@ -34,7 +35,7 @@ function Cart(props) {
     if (user === null) {
         return (
             <List>
-                <ListItem className="" >
+                <ListItem className="styles." >
                     <Icon />
                     <h3 >{props.label}</h3>
                 </ListItem>
@@ -46,43 +47,69 @@ function Cart(props) {
 
     } else if(user.cart.length >= 1) {
         return (
-            <List>
-                <ListItem className="" >
-                    <Icon />
-                    <h3 >{props.label}</h3>
-                </ListItem>
-                <Divider />
-                <ListItem key={'cart-titles'}>
-                    <div className="cartItem">
-                        <span className="cartItemName"><strong>Nome</strong></span>
-                            <span className="cartItemPrice"><strong>Preço</strong></span>
-                        {/* <div className="cartRight">
-                            <span className="cartItemPrice"><strong>Quant.</strong></span>
-                        </div> */}
-                    </div>   
+            <List className={styles.cartDrawer}>
+                <ListItem>
+                    <h2>{props.label}</h2>
                 </ListItem>
                 <Divider/>
+                {/* <Divider />
+                <ListItem key={'cart-titles'}>
+                    <div className={styles.cartItem}>
+                        <span className="styles.cartItemName"><strong>Nome</strong></span>
+                            <span className="styles.cartItemPrice"><strong>Preço</strong></span>
+                        <div className="styles.cartRight">
+                            <span className="styles.cartItemPrice"><strong>Quant.</strong></span>
+                        </div>
+                    </div>   
+                </ListItem> */}
                 {user.cart.map((item, index) => {
                     return (
                         <div key={index}>
-                            <ListItem className="cartItem" >
-                                <span className="cartItemName">{item.name}</span>
-                                    <span className="cartItemPrice">R$ {item.price}</span>
-                                {/* <div className="cartRight">
-                                    <span className="cartItemPrice">Qu{item.amount}</span>
-                                </div> */}
+                            <ListItem >
+                                <div className={styles.cartItem}>
+                                    <div className={styles.imageContainer}>
+                                        <img src={item.imageSrc} alt="" className={styles.image}/>
+                                    </div>
+                                    <div className={styles.description}>
+                                        <h4 style={{ marginTop: "5px" }}>{item.name}</h4>
+                                        <div className={styles.select}>
+                                            <InputLabel id="demo-simple-select-label" className={styles.inputLabel}>Qtd.</InputLabel>
+                                            <Select
+                                                labelId="demo-simple-select-label"
+                                                id="demo-simple-select"
+                                                defaultValue={1}
+                                                // value={age}
+                                                // onChange={handleChange}
+                                            >
+                                                <MenuItem value={1}>1</MenuItem>
+                                                <MenuItem value={2}>2</MenuItem>
+                                                <MenuItem value={3}>3</MenuItem>
+                                                <MenuItem value={4}>4</MenuItem>
+                                                <MenuItem value={5}>5</MenuItem>
+                                                <MenuItem value={6}>6</MenuItem>
+                                            </Select>
+                                        </div>
+                                    </div>
+                                    <div className={styles.price}>
+                                        <p>R${item.price}</p>
+                                    </div>
+                                </div>
                             </ListItem>
                             <Divider />
                         </div>
                     )
                 })}
-                
+                <ListItem >
+                    <div className={styles.goToCart}>
+                        <Button variant="contained" color="primary">Ir para o carrinho</Button>
+                    </div>
+                </ListItem>
             </List>
         )
     } else {
         return (
-            <List>
-                <ListItem className="" >
+            <List className={styles.cartDrawer}>
+                <ListItem >
                     <Icon />
                     <h3 >{props.label}</h3>
                 </ListItem>
